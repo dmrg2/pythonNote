@@ -1,7 +1,4 @@
----
-id: python
-title: Notes about Python
----
+# Notes about Python
 
 ## Object-Oriented Programming
 
