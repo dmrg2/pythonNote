@@ -4,7 +4,7 @@
 
 It is a programming language model in which programs are organized around objects. An object is defined with attributes and methods. OOP focuses on the objects rather than the logic.
 
-## Principles of OOP
+### Principles of OOP
 
 Encapsulation - state of each object is privately held inside a class. Other objects do not have access or the authority to make changes. This data hiding provides greater program security and avoids unintended data corruption.
 
@@ -14,19 +14,19 @@ Inheritance - Subclasses or children can inherit parent’s attributes and metho
 
 Polymorphism - Objects are allowed to take on more than one form depending on the context. The program will determine which meaning or usage is necessary for each execution of that object, cutting down on the need to duplicate code.
 
-## Criticism of OOP
+### Criticism of OOP
 
 The largest concern is that OOP overemphasizes the data component of software development and does not focus enough on computation or algorithms. Additionally, the OOP code may be more complicated to write and take longer to compile.
 
-## Procedure oriented programming
+### Procedure oriented programming
 
 Old programming method. Top to bottom, giving instructions.
 
-## Class / Instance
+### Class / Instance
 
 Instance is made with Class
 
-## Private / Protected / Public
+### Private / Protected / Public
 
 In python, no real private / protected attributes or methods
 protected - single underscore
@@ -100,20 +100,20 @@ class Character(metaclass=ABCMeta):
     pass
 ```
 
-## id / is / ==
+### id / is / ==
 
 class = Class()
 id(class) // return the address
 is // same value and same instance
 == // same value
 
-## Problem with multiple inheritance
+### Problem with multiple inheritance
 
 use super().**init**()
 Order of calling parent’s method
 You can find at CLASS.**mro**
 
-## Composition OR Aggregation
+### Composition OR Aggregation
 
 When you want to use some of the methods of other class, try to avoid whole inheritance
 
@@ -125,3 +125,146 @@ class Class:
 	def otherMethod(self):
 		return self.OtherClass.otherMethod()
 ```
+
+### When you build class
+
+S - SRR(Single Responsibility Principle)
+O - OCP(Open Closed Principle), open for extension but closed for change
+L - LSP(Liskov Substitusion Principle), parent / child can be substituted
+I - ISP(Interface Segregation Principle), if method is not related or useless, it should be separated
+D - DIP(Dependency Inversion Principle) - Parent should not depend on Children
+
+### Design pattern
+
+#### Singleton pattern
+
+Single instance per class
+
+```py
+class CLASS(metaclass=Singleton):
+```
+
+#### Observer pattern
+
+when attributes change, notify all related objects
+
+#### Builder pattern
+
+provide SOME of args, set default values
+
+#### Factory pattern
+
+factory class making objects
+
+### namedtuple
+
+#### collections.namedtuple
+
+class with only attributes
+
+```py
+import collections
+Employee = collections.namedtuple('Employee', ['name', 'id'])
+# or Employee = collections.namedtuple('Person', 'name, id')
+employee1 = Employee('Dave', '4011')
+```
+
+#### typing.NamedTuple
+
+```py
+from typing import NamedTuple
+
+class Employee(NamedTuple):
+    name: str
+    id: int
+
+employee1 = Employee('Guido', 2)
+```
+
+## Data Structure and Algorithm
+
+### Time complexity / Space complexity (memory)
+
+Big O notation O(N)
+Ω omega notation Ω(N) - best running Time
+Θ theta notation Θ(N) - average running Time
+
+O(1) < O(logn) < O(n) < O(nlogn) < O(n2) < O(2n) < O(n!)
+
+### Array
+
+pro: fast access
+con: add / remove is hard
+
+### Queue
+
+```py
+import queue
+# first in, first out
+data_queue = queue.Queue()
+data_queue.put('first')
+data_queue.qsize()
+data_queue.get()
+# last in first out
+data_queue = queue.LifoQueue()
+# priority queue
+data_queue = queue.PriorityQueue()
+# low rank, first out
+data_queue.put((10, 'first'))
+```
+
+### Stack
+
+First in, last out
+pro: easy to implement, fast read/write
+con: set max number of stack, max 1000 recursive function, possible memory leak
+simply use, list append and pop
+
+### Linked List
+
+```py
+class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = ''
+```
+
+pro: no need to set size
+con: not good storage efficiency, slow access, delete middle needs additional work
+
+#### Doubly linked list
+
+```py
+class Node:
+    def __init__(self, data, prev=None, next=None):
+        self.prev = prev
+        self.data = data
+        self.next = next
+```
+
+### Hash Table
+
+key, value pair - Use Dictionary
+Hash - change value to fixed length value
+Hashing Function - translate key to address
+Use when searching needs a lot
+
+pro: fast write / read, easy to find duplicate
+con: require more space, need a function to avoid duplications
+
+```py
+# hashing function
+hash('Dave')
+```
+
+#### Hash Collision resolutions
+
+- Chaining
+- Linear Probing
+
+#### Hash table complexity
+
+Collision: Average O(1), worst O(n)
+Search: O(1)
+
+### Tree
