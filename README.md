@@ -1,10 +1,10 @@
 # Notes about Python
 
-[Object-Oriented Programming](#-OOP)
+[Object-Oriented Programming](#OOP)
 
-[Data Structure and Algorithm](#-Data-Structure)
+[Data Structure and Algorithm](#Data Structure)
 
-[Sorting](#-Sorting)
+[Sorting](#Sorting)
 
 # OOP
 
