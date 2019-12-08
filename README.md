@@ -1,5 +1,7 @@
 # Notes about Python
 
+[Object-Oriented Programming](## Object-Oriented Programming)
+[Data Structure and Algorithm](## Data Structure and Algorithm)
 [Sorting](#sorting)
 
 ## Object-Oriented Programming
@@ -351,8 +353,6 @@ easy to find min / max - takes O(logn)
 ## Space complexity
 
 ## Recursive Call
-
-#sorting
 
 # Sorting
 
