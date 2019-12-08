@@ -29,7 +29,9 @@ Instance is made with Class
 ### Private / Protected / Public
 
 In python, no real private / protected attributes or methods
+
 protected - single underscore
+
 private - double underscore, it becomes \_classname\_\_ attributes / methods, have to access with public class method
 
 ## Class in python
@@ -103,14 +105,19 @@ class Character(metaclass=ABCMeta):
 ### id / is / ==
 
 class = Class()
+
 id(class) // return the address
+
 is // same value and same instance
+
 == // same value
 
 ### Problem with multiple inheritance
 
 use super().**init**()
+
 Order of calling parent’s method
+
 You can find at CLASS.**mro**
 
 ### Composition OR Aggregation
@@ -129,9 +136,13 @@ class Class:
 ### When you build class
 
 S - SRR(Single Responsibility Principle)
+
 O - OCP(Open Closed Principle), open for extension but closed for change
+
 L - LSP(Liskov Substitusion Principle), parent / child can be substituted
+
 I - ISP(Interface Segregation Principle), if method is not related or useless, it should be separated
+
 D - DIP(Dependency Inversion Principle) - Parent should not depend on Children
 
 ### Design pattern
@@ -186,7 +197,9 @@ employee1 = Employee('Guido', 2)
 ### Time complexity / Space complexity (memory)
 
 Big O notation O(N)
+
 Ω omega notation Ω(N) - best running Time
+
 Θ theta notation Θ(N) - average running Time
 
 O(1) < O(logn) < O(n) < O(nlogn) < O(n2) < O(2n) < O(n!)
@@ -194,6 +207,7 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n2) < O(2n) < O(n!)
 ### Array
 
 pro: fast access
+
 con: add / remove is hard
 
 ### Queue
@@ -216,8 +230,11 @@ data_queue.put((10, 'first'))
 ### Stack
 
 First in, last out
+
 pro: easy to implement, fast read/write
+
 con: set max number of stack, max 1000 recursive function, possible memory leak
+
 simply use, list append and pop
 
 ### Linked List
@@ -230,6 +247,7 @@ class Node:
 ```
 
 pro: no need to set size
+
 con: not good storage efficiency, slow access, delete middle needs additional work
 
 #### Doubly linked list
@@ -245,11 +263,15 @@ class Node:
 ### Hash Table
 
 key, value pair - Use Dictionary
+
 Hash - change value to fixed length value
+
 Hashing Function - translate key to address
+
 Use when searching needs a lot
 
 pro: fast write / read, easy to find duplicate
+
 con: require more space, need a function to avoid duplications
 
 ```py
@@ -265,6 +287,53 @@ hash('Dave')
 #### Hash table complexity
 
 Collision: Average O(1), worst O(n)
+
 Search: O(1)
 
 ### Tree
+
+#### Binary Search Tree
+
+```py
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left, self.right = None, None
+
+class NodeMgmt:
+    def __init__(self, head):
+        self.head = head
+
+    def insert(self, value):
+        self.current_node = self.head
+        while True:
+            if value < self.current_node.value:
+                if self.current_node.left != None:
+                    self.current_node = self.current_node.left
+                else:
+                    self.current_node.left = Node(value)
+                    break
+            else:
+                if self.current_node.right != None:
+                    self.current_node = self.current_node.right
+                else:
+                    self.current_node.right = Node(value)
+                    break
+
+    def search(self, value):
+        self.current_node = self.head
+        while self.current_node:
+            if self.current_node.value == value:
+                return True
+            elif value < self.current_node.value:
+                self.current_node = self.current_node.left
+            else:
+                self.current_node = self.current_node.right
+        return False
+```
+
+#### Time complexity
+
+depth = h
+
+h = log2n, so O(log n), worst O(n)
