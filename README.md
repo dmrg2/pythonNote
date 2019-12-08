@@ -1,5 +1,7 @@
 # Notes about Python
 
+[Sorting](#sorting)
+
 ## Object-Oriented Programming
 
 It is a programming language model in which programs are organized around objects. An object is defined with attributes and methods. OOP focuses on the objects rather than the logic.
@@ -341,3 +343,41 @@ class NodeMgmt:
 depth = h
 
 h = log2n, so O(log n), worst O(n)
+
+### Heap
+
+easy to find min / max - takes O(logn)
+
+## Space complexity
+
+## Recursive Call
+
+#sorting
+
+# Sorting
+
+## Selection Sort
+
+```py
+# python's sorted uses selections sort
+sorted(data_list)
+```
+
+1. Find minimum value
+2. Swap with the first one
+3. Do 1 and 2 for the rest
+
+```py
+def selection_sort(data_list):
+    for index in range(len(data_list) - 1):
+        lowest = index
+        for index2 in range(index + 1, len(data_list)):
+            if data_list[lowest] > data_list[index2]:
+                lowest = index2
+        data_list[index], data_list[lowest] = data_list[lowest], data_list[index]
+    return data_list
+```
+
+As you can see, O(n2)
+
+## Insertion Sort
