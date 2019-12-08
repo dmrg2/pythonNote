@@ -1,14 +1,14 @@
 # Notes about Python
 
-[Object-Oriented Programming](##Object-Oriented Programming)
-[Data Structure and Algorithm](##Data Structure and Algorithm)
+[Object-Oriented Programming](#Object-Oriented Programming)
+[Data Structure and Algorithm](#Data Structure and Algorithm)
 [Sorting](#sorting)
 
-## Object-Oriented Programming
+# Object-Oriented Programming
 
 It is a programming language model in which programs are organized around objects. An object is defined with attributes and methods. OOP focuses on the objects rather than the logic.
 
-### Principles of OOP
+## Principles of OOP
 
 Encapsulation - state of each object is privately held inside a class. Other objects do not have access or the authority to make changes. This data hiding provides greater program security and avoids unintended data corruption.
 
@@ -18,19 +18,19 @@ Inheritance - Subclasses or children can inherit parent’s attributes and metho
 
 Polymorphism - Objects are allowed to take on more than one form depending on the context. The program will determine which meaning or usage is necessary for each execution of that object, cutting down on the need to duplicate code.
 
-### Criticism of OOP
+## Criticism of OOP
 
 The largest concern is that OOP overemphasizes the data component of software development and does not focus enough on computation or algorithms. Additionally, the OOP code may be more complicated to write and take longer to compile.
 
-### Procedure oriented programming
+## Procedure oriented programming
 
 Old programming method. Top to bottom, giving instructions.
 
-### Class / Instance
+## Class / Instance
 
 Instance is made with Class
 
-### Private / Protected / Public
+## Private / Protected / Public
 
 In python, no real private / protected attributes or methods
 
@@ -106,7 +106,7 @@ class Character(metaclass=ABCMeta):
     pass
 ```
 
-### id / is / ==
+## id / is / ==
 
 class = Class()
 
@@ -116,7 +116,7 @@ is // same value and same instance
 
 == // same value
 
-### Problem with multiple inheritance
+## Problem with multiple inheritance
 
 use super().**init**()
 
@@ -124,7 +124,7 @@ Order of calling parent’s method
 
 You can find at CLASS.**mro**
 
-### Composition OR Aggregation
+## Composition OR Aggregation
 
 When you want to use some of the methods of other class, try to avoid whole inheritance
 
@@ -137,7 +137,7 @@ class Class:
 		return self.OtherClass.otherMethod()
 ```
 
-### When you build class
+## When you build class
 
 S - SRR(Single Responsibility Principle)
 
@@ -149,9 +149,9 @@ I - ISP(Interface Segregation Principle), if method is not related or useless, i
 
 D - DIP(Dependency Inversion Principle) - Parent should not depend on Children
 
-### Design pattern
+## Design pattern
 
-#### Singleton pattern
+### Singleton pattern
 
 Single instance per class
 
@@ -159,21 +159,21 @@ Single instance per class
 class CLASS(metaclass=Singleton):
 ```
 
-#### Observer pattern
+### Observer pattern
 
 when attributes change, notify all related objects
 
-#### Builder pattern
+### Builder pattern
 
 provide SOME of args, set default values
 
-#### Factory pattern
+### Factory pattern
 
 factory class making objects
 
-### namedtuple
+## namedtuple
 
-#### collections.namedtuple
+### collections.namedtuple
 
 class with only attributes
 
@@ -184,7 +184,7 @@ Employee = collections.namedtuple('Employee', ['name', 'id'])
 employee1 = Employee('Dave', '4011')
 ```
 
-#### typing.NamedTuple
+### typing.NamedTuple
 
 ```py
 from typing import NamedTuple
@@ -196,9 +196,9 @@ class Employee(NamedTuple):
 employee1 = Employee('Guido', 2)
 ```
 
-## Data Structure and Algorithm
+# Data Structure and Algorithm
 
-### Time complexity / Space complexity (memory)
+## Time complexity / Space complexity (memory)
 
 Big O notation O(N)
 
@@ -208,13 +208,13 @@ Big O notation O(N)
 
 O(1) < O(logn) < O(n) < O(nlogn) < O(n2) < O(2n) < O(n!)
 
-### Array
+## Array
 
 pro: fast access
 
 con: add / remove is hard
 
-### Queue
+## Queue
 
 ```py
 import queue
@@ -231,7 +231,7 @@ data_queue = queue.PriorityQueue()
 data_queue.put((10, 'first'))
 ```
 
-### Stack
+## Stack
 
 First in, last out
 
@@ -241,7 +241,7 @@ con: set max number of stack, max 1000 recursive function, possible memory leak
 
 simply use, list append and pop
 
-### Linked List
+## Linked List
 
 ```py
 class Node:
@@ -254,7 +254,7 @@ pro: no need to set size
 
 con: not good storage efficiency, slow access, delete middle needs additional work
 
-#### Doubly linked list
+### Doubly linked list
 
 ```py
 class Node:
@@ -264,7 +264,7 @@ class Node:
         self.next = next
 ```
 
-### Hash Table
+## Hash Table
 
 key, value pair - Use Dictionary
 
@@ -283,20 +283,20 @@ con: require more space, need a function to avoid duplications
 hash('Dave')
 ```
 
-#### Hash Collision resolutions
+### Hash Collision resolutions
 
 - Chaining
 - Linear Probing
 
-#### Hash table complexity
+### Hash table complexity
 
 Collision: Average O(1), worst O(n)
 
 Search: O(1)
 
-### Tree
+## Tree
 
-#### Binary Search Tree
+### Binary Search Tree
 
 ![alt text](https://github.com/dmrg2/pythonNote/blob/master/tree.png)
 
@@ -340,13 +340,13 @@ class NodeMgmt:
         return False
 ```
 
-#### Time complexity
+### Time complexity
 
 depth = h
 
 h = log2n, so O(log n), worst O(n)
 
-### Heap
+## Heap
 
 easy to find min / max - takes O(logn)
 
