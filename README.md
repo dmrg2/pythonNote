@@ -294,9 +294,9 @@ Search: O(1)
 
 #### Binary Search Tree
 
-[https://github.com/dmrg2/pythonNote/blob/master/tree.png]
+(https://github.com/dmrg2/pythonNote/blob/master/tree.png)
 
-[https://github.com/dmrg2/pythonNote/blob/master/binarySearch.gif]
+(https://github.com/dmrg2/pythonNote/blob/master/binarySearch.gif)
 
 ```py
 class Node:
