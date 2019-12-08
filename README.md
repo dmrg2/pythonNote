@@ -1,12 +1,12 @@
 # Notes about Python
 
-[Object-Oriented Programming](#Object-Oriented Programming)
+[Object-Oriented Programming](#-OOP)
 
-[Data Structure and Algorithm](#Data Structure and Algorithm)
+[Data Structure and Algorithm](#-Data-Structure)
 
-[Sorting](#sorting)
+[Sorting](#-Sorting)
 
-# Object-Oriented Programming
+# OOP
 
 It is a programming language model in which programs are organized around objects. An object is defined with attributes and methods. OOP focuses on the objects rather than the logic.
 
@@ -198,7 +198,7 @@ class Employee(NamedTuple):
 employee1 = Employee('Guido', 2)
 ```
 
-# Data Structure and Algorithm
+# Data Structure
 
 ## Time complexity / Space complexity (memory)
 
