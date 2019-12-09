@@ -2,9 +2,11 @@
 
 [Object-Oriented Programming](#OOP)
 
-[Data Structure and Algorithm](#Data-Structure)
+[Data Structure](#Data-Structure)
 
 [Sorting](#Sorting)
+
+[Searching](#Searching)
 
 # OOP
 
@@ -383,3 +385,239 @@ def selection_sort(data_list):
 As you can see, O(n2)
 
 ## Insertion Sort
+
+1. set key and compare previous indexes
+2. if key is bigger than the previous, stop traveling and insert there
+
+```py
+def insertion_sort(data_list):
+    for stand in range(len(data_list)):
+        key = data_list[stand]
+        for num in range(stand, 0, -1):
+            if key < data_list[num - 1]:
+                data_list[num - 1], data_list[num] = data_list[num], data_list[num - 1]
+            else:
+                break
+    return data_list
+```
+
+Best O(n) - if already sorted, average O(n2), worst O(n2)
+
+## Bubble Sort
+
+1. Compare two numbers, swap if required
+2. Keep traveling
+
+```py
+def bubble_sort(data):
+    for index in range(len(data_list)):
+        swap = 0
+        for index2 in range(len(data_list) - 1 - index):
+            if data_list[index2] > data_list[index2 + 1]:
+                data_list[index2], data_list[index2 + 1] = data_list[index2 + 1], data_list[index2]
+                swap += 1
+        if swap == 0:
+            break
+    return data_list
+```
+
+Best O(n) - if already sorted, average O(n2), worst O(n2)
+
+## Merge Sort
+
+using recursive
+
+1. Cut list in small parts
+2. Compare and merge two parts
+3. Recursively do again
+
+Two parts needed
+
+1. mergeSplit()
+
+```py
+def mergesplit(data_list):
+    if len(data_list) == 1:
+        return data_list
+    medium = int(len(data_list) / 2)
+    left = mergesplit(data_list[:medium])
+    right = mergesplit(data_list[medium:])
+    return merge(left, right)
+```
+
+2. merge()
+
+```py
+def merge(left, right):
+    merged = list()
+    left_point, right_point = 0, 0
+
+    while len(left) > left_point and len(right) > right_point:
+        if left[left_point] > right[right_point]:
+            merged.append(right[right_point])
+            right_point += 1
+        else:
+            merged.append(left[left_point])
+            left_point += 1
+
+    while len(left) > left_point:
+        merged.append(left[left_point])
+        left_point += 1
+    while len(right) > right_point:
+        merged.append(right[right_point])
+        right_point += 1
+
+    return merged
+```
+
+Depth = log2n which is O(log n)
+
+each depth takes O(n)
+
+Therefore O(n log n)
+
+## Quick Sort
+
+1. Set Pivot, put smaller to the left, bigger to the right
+2. Recursively do for left and right parts
+
+```py
+def quick_sort(data_list):
+    if len(data_list) <= 1:
+        return data_list
+
+    left, right = list(), list()
+    pivot = data_list[0]
+
+    for index in range(1, len(data_list)):
+        if pivot > data_list[index]:
+            left.append(data_list[index])
+        else:
+            right.append(data_list[index])
+    return quick_sort(left) + [pivot] + quick_sort(right)
+```
+
+O(n log n), however, worst case takes O(n2)
+
+if pivot is always smallest or biggest, you have to go through all n
+
+# Searching
+
+## Sequential Search
+
+Go through list and search, O(n)
+
+## Binary Search
+
+1. Go to middle of the list and compare
+2. Go to middle of the left or right and so on.
+
+```py
+def binary_search(data_list, data):
+    if len(data_list) == 1 and data_list[0] != data:
+        return False
+    elif len(data_list) == 1 and data_list[0] == data:
+        return True
+
+    medium = len(data_list) // 2
+
+    if data > data_list[medium]:
+        return binary_search(data_list[:medium], data)
+    else:
+        return binary_search(data_list[medium:], data)
+```
+
+O(log2n + 1) since it compares when it is len == 1. So O(log n)
+
+## Binary Tree Search
+
+![alt text](https://github.com/dmrg2/pythonNote/blob/master/binaryTree.gif)
+
+```py
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left, self.right = None, None
+
+        class NodeMgmt:
+            def __init__(self, node):
+                self.head = node
+
+            def insert(self, value):
+                self.current_node = self.head
+                while True:
+                    if self.current_node.value > value:
+                        if self.current_node.left != None:
+                            self.current_node = self.current_node.left
+                        else:
+                            self.current_node.left = Node(value)
+                            break
+                    else:
+                        if self.current_node.right != None:
+                            self.current_node = self.current_node.right
+                        else:
+                            self.current_node.right = Node(value)
+                            break
+
+            def search(self, value):
+                self.current_node = self.head
+                while self.current_node:
+                    if self.current_node.value == value:
+                        return True
+                    elif self.current_node.value > value:
+                        self.current_node = self.current_node.left
+                    else:
+                        self.current_node = self.current_node.right
+                return False
+
+            def delete(self, value):
+                self.current_node, self.parent = self.head, self.parent
+                while self.current_node:
+                    if self.current_node.value == value:
+                        break
+                    elif self.current_node.value > value:
+                        self.parent = self.current_node
+                        self.current_node = self.current_node.left
+                    else:
+                        self.parent = self.current_node
+                        self.current_node = self.current_node.right
+
+                # case1
+                if self.current_node.left == None and self.current_node.right == None:
+                    if self.parent.value > value:
+                        self.parent.left = None
+                    else:
+                        self.parent.right = None
+
+                # case2
+                if self.current_node.left != None and self.current_node.right == None:
+                    if self.parent.value > value:
+                        self.parent.left = self.current_node.left
+                    else:
+                        self.parent.right = self.current_node.left
+                elif self.current_node.left == None and self.current_node.right != None:
+                    if self.parent.value > value:
+                        self.parent.left = self.current_node.right
+                    else:
+                        self.parent.right = self.current_node.right
+
+                # case3
+                if self.current_node.left != None and self.current_node.right != None:
+                    if self.parent.value > value:
+                        self.parent.left = self.current_node.right
+                        self.added_node = self.current_node.right
+                        self.added_node_parent = self.current_node.right
+                        while self.added_node.left != None:
+                            self.added_node_parent = self.added_node
+                            self.added_node = self.added_node.left
+                        self.added_node_parent.left = self.current_node.left
+                    else:
+                        self.parent.right = self.current_node.right
+                        self.added_node = self.current_node.right
+                        self.added_node_parent = self.current_node.right
+                        while self.added_node.left != None:
+                            self.added_node_parent = self.added_node
+                            self.added_node = self.added_node.left
+                        self.added_node_parent.left = self.current_node.left
+
+```
